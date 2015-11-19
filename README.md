@@ -1,3 +1,13 @@
+# Core Features
+* Create a group
+* Invite another person into the group
+* See groups I belong to
+* Automatically synchronize users with antplanner
+* Render group memebers' schedule data on a calendar
+
+# Nice to have
+* Share files about class
+* Send messages to the group
 
 # Antplanner Extraction Example
 
