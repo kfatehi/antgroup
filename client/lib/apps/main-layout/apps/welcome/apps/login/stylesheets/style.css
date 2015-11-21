@@ -1,0 +1,15 @@
+.panel-list table {
+	margin-bottom: 0;
+}
+
+.panel-list td.edit {
+	width: 30px;
+}
+
+.panel-list td.duplicate {
+	width: 30px;
+}
+
+.panel-list td.rmv {
+	width: 30px;
+}
