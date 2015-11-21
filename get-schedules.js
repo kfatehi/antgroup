@@ -22,12 +22,12 @@ function getSchedule(id) {
   }).then(function(res) {
     return {
       id: id,
-      events: fixTimezones(JSON.parse(JSON.parse(res).data))
+      events: subtractTime(JSON.parse(JSON.parse(res).data), 7, 'hours')
     }
   });
 }
 
-function fixTimezones(events, amt, unit) {
+function subtractTime(events, amt, unit) {
   return _.map(events, function(e) {
     e.start = moment(e.start).subtract(amt, unit).toDate()
     e.end = moment(e.end).subtract(amt, unit).toDate()

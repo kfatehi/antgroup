@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors());
 
+app.use(express.static('client'));
+
 app.post('/schedules', function(req, res, next){
   console.log('waa', req.body);
   getSchedules(req.body.ids).then(function(result) {
