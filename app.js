@@ -5,19 +5,18 @@ var app = express();
 
 var bodyParser = require('body-parser')
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors());
 
 app.post('/schedules', function(req, res, next){
+  console.log('waa', req.body);
   getSchedules(req.body.ids).then(function(result) {
-    console.log(result);
     res.json(result)
   }).catch(function(err) {
-    console.log(err);
+    console.log('error', err);
+    res.sendStatus(500).end()
   });
 });
 
-app.listen(80, function(){
-  console.log('CORS-enabled web server listening on port 80');
-});
+module.exports = app

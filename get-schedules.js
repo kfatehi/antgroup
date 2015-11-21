@@ -1,5 +1,7 @@
 var Promise = require('bluebird')
 var request = require('request');
+var moment = require('moment');
+var _ = require('lodash');
 
 module.exports = function(ids) {
   return Promise.map(ids, function(id) {
@@ -20,7 +22,22 @@ function getSchedule(id) {
   }).then(function(res) {
     return {
       id: id,
-      events: JSON.parse(JSON.parse(res).data)
+      events: fixTimezones(JSON.parse(JSON.parse(res).data))
     }
   });
+}
+
+function fixTimezones(events) {
+  _.map(events, function(e) {
+    sub(e, 'start')
+    sub(e, 'end')
+    return e
+  })
+}
+
+
+function sub(e, key) {
+  console.log(e);
+  e[key] = moment(e[key]).subtract(5, 'hours').toDate()
+  return e;
 }

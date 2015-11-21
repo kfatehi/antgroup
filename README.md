@@ -18,9 +18,7 @@
 ## Backend
 
 * Node.js
-* Hapi
-* Sequelize
-* Postgres
+* Express
 
 # Antplanner Extraction Example
 

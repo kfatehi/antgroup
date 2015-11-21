@@ -4,7 +4,8 @@
   "description": "* Create a group * Invite another person into the group * See groups I belong to * Automatically synchronize users with antplanner * Render group memebers' schedule data on a calendar",
   "main": "server.js",
   "scripts": {
-    "test": "lab test",
+    "test": "REPLAY=record mocha test",
+    "tdd": "REPLAY=record mocha -w test",
     "start": "node server.js"
   },
   "repository": {
@@ -22,8 +23,15 @@
     "body-parser": "^1.14.1",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "replay": "^2.0.6",
     "request": "^2.67.0"
   },
   "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "sepia": "^2.0.1",
+    "supertest": "^1.1.0"
   }
 }
