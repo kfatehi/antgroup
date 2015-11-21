@@ -9,7 +9,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(cors());
 
-app.use(express.static('client'));
+app.use('/app', express.static('client'));
+
+app.get('/', function(req, res) {
+  res.sendFile(__dirname+'/landing/index.html');
+})
 
 app.post('/schedules', function(req, res, next){
   getSchedules(req.body.ids).then(function(result) {
@@ -20,19 +24,18 @@ app.post('/schedules', function(req, res, next){
 });
 
 app.post('/register', function(req, res) {
-  // name
-  // email
-  // password
-  // password_confirmation
-  // antplanner_id
   var body = req.body
   if (
     body.name.length >= 1 &&
-    body.antplanner_id >= 1 &&
+    body.antplannerId >= 1 &&
     body.email.match(/.+@.+\..+/) &&
-    body.password === req.body.password_confirmation &&
+    body.password === req.body.passwordConfirmation &&
     body.password.length >= 6
   ) {
+    User.createWithPassword(body.password, {
+      email: body.email,
+      antplannerId: body.antplannerId
+    })
   } else {
     return res.sendStatus(400).json({
       error: 'invalid input'
