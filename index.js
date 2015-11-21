@@ -1,3 +1,4 @@
+var getSchedules = require('./get-schedules');
 var express = require('express');
 var cors = require('cors');
 var app = express();
@@ -9,8 +10,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 
 app.post('/schedules', function(req, res, next){
-  console.log(req.body);
-  res.json({msg: 'This is CORS-enabled for all origins!'});
+  getSchedules(req.body.ids).then(function(result) {
+    console.log(result);
+    res.json(result)
+  }).catch(function(err) {
+    console.log(err);
+  });
 });
 
 app.listen(80, function(){
