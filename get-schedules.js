@@ -27,17 +27,10 @@ function getSchedule(id) {
   });
 }
 
-function fixTimezones(events) {
-  _.map(events, function(e) {
-    sub(e, 'start')
-    sub(e, 'end')
+function fixTimezones(events, amt, unit) {
+  return _.map(events, function(e) {
+    e.start = moment(e.start).subtract(amt, unit).toDate()
+    e.end = moment(e.end).subtract(amt, unit).toDate()
     return e
   })
-}
-
-
-function sub(e, key) {
-  console.log(e);
-  e[key] = moment(e[key]).subtract(5, 'hours').toDate()
-  return e;
 }
