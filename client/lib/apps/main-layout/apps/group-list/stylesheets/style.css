@@ -16,3 +16,7 @@ table.member-table {
 span.member-name {
     margin-left: 5px;
 }
+
+div.group-list {
+    padding: 5px;
+}

@@ -5,6 +5,8 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
         template: _.template('\
             <div class="panel panel-default group-row">\
                 <div class="panel-heading">\
+                    <button class="btn btn-default btn-xs">Select</button>\
+                    <button class="btn btn-success btn-xs">Add Member</button>\
                 </div>\
                 <div class="panel-body panel-table">\
                     <table class="table table-striped member-table"></table>\
@@ -34,7 +36,7 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
         render: function () {
             this.$el.html(this.template());
 
-            this.$el.find('.panel-heading').append(this.model.get('name'));
+            this.$el.find('.panel-heading').prepend(this.model.get('name'));
 
             var $table = this.$el.find('.panel-body table');
 
