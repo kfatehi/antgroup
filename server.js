@@ -1,5 +1,6 @@
 var app = require('./lib/app')
 
-app.listen(process.env.PORT || 80, function(){
-  console.log('Web server listening on port '+process.env.PORT);
+var port = (process.env.PORT || 80;
+app.listen(port, function(){
+  console.log('Web server listening on port '+port);
 });
