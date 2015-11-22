@@ -65,6 +65,12 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
 
             this.$el.find('.panel-heading').prepend(this.model.get('name'));
 
+            var owner = this.model.get('owner');
+
+            if (parseInt(location.hash.split('/')[1]) !== owner) {
+                this.$el.find('.panel-heading').find('.remove-group').hide();
+            }
+
             var $table = this.$el.find('.panel-body table');
 
             var members = this.model.get('members');
