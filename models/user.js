@@ -21,11 +21,12 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    antplannerId: DataTypes.STRING
+    antPlannerId: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        User.belongsToMany(models.Group, { through: models.Membership })
       },
       login: function(email, password) {
         return User.findOne({ where: { email: email } })
@@ -34,7 +35,6 @@ module.exports = function(sequelize, DataTypes) {
         })
       },
       register: function(body) {
-        console.log(body);
         return new Promise(function(resolve, reject) {
           var errors = []
           if (body.name.length <= 1)

@@ -4,8 +4,6 @@
   "description": "* Create a group * Invite another person into the group * See groups I belong to * Automatically synchronize users with antplanner * Render group memebers' schedule data on a calendar",
   "main": "server.js",
   "scripts": {
-    "test": "REPLAY=record mocha test",
-    "tdd": "REPLAY=record mocha -w test",
     "start": "node server.js"
   },
   "repository": {
@@ -32,12 +30,5 @@
     "sequelize": "^3.14.1",
     "sqlite3": "^3.1.1",
     "uuid": "^2.0.1"
-  },
-  "devDependencies": {
-    "replay": "^2.0.6",
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4",
-    "sepia": "^2.0.1",
-    "supertest": "^1.1.0"
   }
 }
