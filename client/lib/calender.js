@@ -12,10 +12,11 @@ define(['jquery', 'jquery-ui', 'jquery-weekcalendar'], function ($) {
             return union.concat(cur.events);
         }, []);
 
-        //container.empty();
+        container.empty();
 
+        var cont = $('<div>').appendTo(container);
 
-        container.weekCalendar({
+        cont.weekCalendar({
             date: new Date("2012-10-01T21:50:00.000Z"),
             timeFormat:"h:i",
             timeslotsPerHour: 4,
