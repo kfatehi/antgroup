@@ -18,7 +18,12 @@ define(['Backbone', 'underscore', './GroupRow', './GroupRowView', 'css!./stylesh
         },
 
         initialize: function () {
+            this.listenTo(this.model, 'updated',this.render);
+        },
 
+        addGroup: function () {
+            var gName = window.prompt('Group Name:');
+            this.model.addGroup(gName);
         },
 
         remove: function (empty) {

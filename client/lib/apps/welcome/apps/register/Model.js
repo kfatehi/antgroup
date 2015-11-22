@@ -23,6 +23,7 @@ define(['Backbone', 'jquery'], function (Backbone, $) {
 
         processSuccessResponse : function (user) {
             console.log('register success ', user);
+            window.AntGroup.router.navigate('schedules/' + user.id, {trigger: true});
         },
 
         processErrorResponse : function (res) {

@@ -29,7 +29,9 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
         addMember: function () {
             console.log('user added to the group');
             var email = window.prompt('Member Email');
-            this.model.addMember(email);
+            if (email) {
+                this.model.addMember(email);
+            }
         },
 
         removeGroup: function () {
@@ -38,7 +40,7 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
         },
 
         initialize: function () {
-            this.listenTo(this.model, 'error', this.renderError);
+            this.listenTo(this.model, 'updated', this.render);
         },
 
         remove: function (empty) {
@@ -62,7 +64,7 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
             var members = this.model.get('members');
             var memberRowModel, memberRowView;
             members.forEach(function (member, idx) {
-                member.color = CSS_COLOR_NAMES[idx];
+                member.color = AntGroup.CSS_COLOR_NAMES[idx];
                 memberRowModel = new MemberRow(member);
                 memberRowView = new MemberRowView({
                     model: memberRowModel

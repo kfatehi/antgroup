@@ -34,7 +34,7 @@ define(['Backbone', 'underscore', 'calender', './apps/group-list/main', 'css!./s
 
             var user = this.model.get('user');
             var groups = user.groups;
-            if ( groups ) {
+            if ( Array.isArray(groups) && groups.length ) {
                 var emails = groups[0].members.map(function (user) {
                     return user.email;
                 });
@@ -42,13 +42,20 @@ define(['Backbone', 'underscore', 'calender', './apps/group-list/main', 'css!./s
                 var $el = this.$el;
 
                 $.post(AntGroup.baseurl + '/schedules', {emails: emails}, function (res) {
-                    console.log(res);
-                    calender.render($el.find('div#calender'), data);
+                    var email;
+                    res.forEach(function (obj, idx) {
+                        email = obj.email;
+                        obj.user = {
+                            email: email,
+                            color: AntGroup.CSS_COLOR_NAMES[idx]
+                        };
+                    });
+                    calender.render($el.find('div#calender'), res);
                 });
             }
 
 
-
+            AntGroup.emitter.on('updateCallender', calender.render.bind(null, $('div#calender')));
 
             groupListControler.destroyPanel(true);
             groupListControler.createPanel(this.$el.find('div#groups-ui'), user);

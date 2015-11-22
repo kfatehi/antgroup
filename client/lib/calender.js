@@ -12,6 +12,9 @@ define(['jquery', 'jquery-ui', 'jquery-weekcalendar'], function ($) {
             return union.concat(cur.events);
         }, []);
 
+        //container.empty();
+
+
         container.weekCalendar({
             date: new Date("2012-10-01T21:50:00.000Z"),
             timeFormat:"h:i",
@@ -70,9 +73,13 @@ define(['jquery', 'jquery-ui', 'jquery-weekcalendar'], function ($) {
         });
     }
 
-    return {
+    //AntGroup.emitter.on('updateCallender', model.render);
+
+    var model = {
         render: render
     };
+
+    return model;
 });
 
 
