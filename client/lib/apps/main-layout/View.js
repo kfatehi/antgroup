@@ -1,18 +1,4 @@
 /*jshint multistr: true, eqnull:true */
-var data = [{
-    "user": {
-        "email" : 'sergzak022@gmail.com',
-        "color" : 'lightblue'
-    },
-    "events": []
-}, {
-    "user" : {
-        "email" : 'artur@gmail.com',
-        "color" : 'pink'
-    },
-    "events": []
-}];
-
 
 define(['Backbone', 'underscore', 'calender', './apps/group-list/main', 'css!./stylesheets/style'], function (Backbone, _, calender, groupListControler) {
     return Backbone.View.extend({
@@ -46,10 +32,26 @@ define(['Backbone', 'underscore', 'calender', './apps/group-list/main', 'css!./s
         render: function () {
             this.$el.append(this.template());
 
-            calender.render(this.$el.find('div#calender'), data);
+            var user = this.model.get('user');
+            var groups = user.groups;
+            if ( groups ) {
+                var emails = groups[0].members.map(function (user) {
+                    return user.email;
+                });
+
+                var $el = this.$el;
+
+                $.post(AntGroup.baseurl + '/schedules', {emails: emails}, function (res) {
+                    console.log(res);
+                    calender.render($el.find('div#calender'), data);
+                });
+            }
+
+
+
 
             groupListControler.destroyPanel(true);
-            groupListControler.createPanel(this.$el.find('div#groups-ui'), this.model.get('user'));
+            groupListControler.createPanel(this.$el.find('div#groups-ui'), user);
             return this;
         }
     });
