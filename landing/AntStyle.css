@@ -1,0 +1,35 @@
+body {
+	background: url("students-group.jpg") no-repeat fixed center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center top;
+	font: 12px "Trebuchet MS",Trebuchet,Verdana,sans-serif;
+	letter-spacing: 3px;
+	margin: 0;
+}
+p {
+	background-color:rgba(112,128,144,0.9);
+	position: fixed;
+	padding-left: 0;
+	top: 70%;
+	width: 100%;
+	text-align: center;
+    color: white;
+    font-size: large;
+}
+h1
+{
+	text-indent: 20px;
+	font-size: xx-large;
+	letter-spacing: 3px;
+}
+h2
+{
+	text-indent: 20px;
+	letter-spacing: 3px;
+}
+a
+{
+	color: black;
+	text-decoration: none;
+}
