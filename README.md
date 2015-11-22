@@ -4,6 +4,8 @@ This is a group schedule planner created by UCI students during the HackUCI hack
 
 An instance is/was hosted at http://antgroup.cloudapp.net
 
+The devpost page is http://devpost.com/software/antgroup
+
 ## Core Features
 
 * Create groups
@@ -31,7 +33,7 @@ An instance is/was hosted at http://antgroup.cloudapp.net
 
 ### APIs
 
-[AntPlanner](antplanner.appspot.com)
+[AntPlanner](http://antplanner.appspot.com)
 
 See docs/ for more information
 
