@@ -3,6 +3,14 @@ requirejs.config({
         {
             name: 'welcome',
             location: '../'
+        },
+        {
+            name: 'login',
+            location: '../apps/login'
+        },
+        {
+            name: 'register',
+            location: '../apps/register'
         }
     ],
 	map: {
@@ -38,6 +46,6 @@ requirejs.config({
     }
 });
 
-require(['welcome'], function (welcom) {
-    welcom.createPanel($('#main'));
+require(['welcome'], function (welcome) {
+    welcome.createPanel($('#main'));
 });

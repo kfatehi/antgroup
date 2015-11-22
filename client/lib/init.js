@@ -1,6 +1,7 @@
 var data = [{
     "user": {
-        "email" : 'sergzak022@gmail.com'
+        "email" : 'sergzak022@gmail.com',
+        "color" : 'lightblue'
     },
     "events": [{
         "id": "702d",
@@ -83,7 +84,8 @@ var data = [{
     }]
 }, {
     "user" : {
-        "email" : 'artur@gmail.com'
+        "email" : 'artur@gmail.com',
+        "color" : 'pink'
     },
     "events": [{
         "id": "6dbc",

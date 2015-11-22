@@ -3,17 +3,11 @@
 define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone, _) {
     return Backbone.View.extend({
         template: _.template('\
-            <div id="login" class="wrapper">\
-                <form class="form-register">\
-                  <h2 class="form-register-heading">Enter your information</h2>\
-                  <input type="text" class="form-control" name="name" placeholder="Name" required="" autofocus="" />\
-                  <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />\
-                  <input type="text" class="form-control" name="ant-planer-id" placeholder="AntPlaner ID" required=""/>\
-                  <input type="password" class="form-control" name="password" placeholder="Password" required=""/>\
-                  <input type="password" class="form-control" name="confirm-password" placeholder="Confirm Password" required=""/>\
-                  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>\
-                </form>\
-            </div>\
+            <div class="errors"></div>\
+            <h2 class="form-login-heading">Enter your information</h2>\
+            <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />\
+            <input type="password" class="form-control" name="password" placeholder="Password" required=""/>\
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>\
         '),
 
         events: {
@@ -21,11 +15,26 @@ define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone
         },
 
         initialize: function () {
-
+            this.listenTo(this.model, 'error', this.renderError);
         },
 
-        register : function () {
-            console.log('registering')
+        register : function (e) {
+            e.preventDefault();
+            var values = {};
+            values.email = this.$el.find("input[name='email']").val();
+            values.password = this.$el.find("input[name='password']").val();
+
+            this.model.register(values);
+        },
+
+        renderError: function (errs) {
+            if ( Array.isArray(errs) ) {
+                var $errors = this.$el.find('.errors');
+                $errors.empty();
+                errs.forEach(function (err) {
+                    $errors.append('<p>' + err + '</p>');
+                });
+            }
         },
 
         remove: function (empty) {
@@ -40,7 +49,7 @@ define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone
         },
 
         render: function () {
-            this.$el.append(this.template());
+            this.$el.html(this.template());
             return this;
         }
     });

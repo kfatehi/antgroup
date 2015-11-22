@@ -1,7 +1,7 @@
 requirejs.config({
     packages: [
         {
-            name: 'welcome',
+            name: 'group-list',
             location: '../'
         }
     ],
@@ -38,6 +38,44 @@ requirejs.config({
     }
 });
 
-require(['welcome'], function (welcom) {
-    welcom.createPanel($('#main'));
+var defaultObj = {
+    name: 'kevin',
+    email: 'kevin@email',
+    groups: [{
+        name: '6b',
+        members: [
+            {
+                name: 'sergey',
+                email: 'sergey@email'
+            },{
+                name: 'artur',
+                email: 'artur@email'
+            }
+        ],
+        owner: {
+            name: 'kevin',
+            email: 'kevin@email'
+        }
+    },{
+        name: 'hackaton',
+        members: [
+            {
+                name: 'anna',
+                email: 'anna@email'
+            },{
+                name: 'artur',
+                email: 'artur@email'
+            }
+        ],
+        owner: {
+            name: 'kevin',
+            email: 'kevin@email'
+        }
+    }]
+};
+
+require(['group-list'], function (group_list) {
+    group_list.createPanel($('#main'), defaultObj);
 });
+
+
