@@ -3,15 +3,23 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
     var Router = Backbone.Router.extend({
         routes: {
             "index": "renderWelcomeScreen",
-            "schedules/:id" : "renerMainLayout"
+            "schedules/:id" : "renderMainLayout"
         },
 
         renderWelcomeScreen: function () {
             // user welcome controller to render welcome screen
+            console.log('render welcom screen');
+           window.AntGroup.welcome.createPanel(window.AntGroup.mainContainer);
         },
 
         renderMainLayout: function (id) {
             // use main-layout controller to render main layout
+            window.AntGroup.mainContainer.empty();
+            window.AntGroup.welcome.destroyPanel();
+            window.AntGroup.mainLayout.destroyPanel(); // just in case
+            window.AntGroup.mainLayout.createPanel(window.AntGroup.mainContainer, window.AntGroup.user);
+            window.AntGroup.user = null;
+
         }
     });
 

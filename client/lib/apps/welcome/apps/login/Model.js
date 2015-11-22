@@ -1,18 +1,15 @@
 define(['Backbone', 'jquery'], function (Backbone, $) {
     return Backbone.Model.extend({
         defaults: {
-            name: null,
             email: null,
-            antPlannerId: null,
-            password: null,
-            confirmPassword: null
+            password: null
         },
 
         register: function (values) {
             this.set(values);
 
             $.ajax({
-                url: "http://107.170.244.250/register",
+                url: AntGroup.baseurl + "/session",
                 type: "POST",
                 data: this.toJSON(),
                 cotentType: 'application/json',
@@ -23,6 +20,8 @@ define(['Backbone', 'jquery'], function (Backbone, $) {
 
         processSuccessResponse : function (user) {
             console.log('register success ', user);
+            window.AntGroup.user = user;
+            window.AntGroup.router.navigate('schedules/' + user.id, {trigger: true});
         },
 
         processErrorResponse : function (res) {
@@ -32,7 +31,7 @@ define(['Backbone', 'jquery'], function (Backbone, $) {
             } catch (e) {
                 response = {errors: []};
             }
-            this.trigger('error', response.errors, []);
+            this.trigger('error', response.errors || []);
         }
     });
 });

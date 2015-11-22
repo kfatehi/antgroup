@@ -1,15 +1,18 @@
 define(['Backbone', 'jquery'], function (Backbone, $) {
     return Backbone.Model.extend({
         defaults: {
+            name: null,
             email: null,
-            password: null
+            antPlannerId: null,
+            password: null,
+            confirmPassword: null
         },
 
         register: function (values) {
             this.set(values);
 
             $.ajax({
-                url: "http://107.170.244.250/session",
+                url: AntGroup.baseurl + "/register",
                 type: "POST",
                 data: this.toJSON(),
                 cotentType: 'application/json',
@@ -29,7 +32,7 @@ define(['Backbone', 'jquery'], function (Backbone, $) {
             } catch (e) {
                 response = {errors: []};
             }
-            this.trigger('error', response.errors || []);
+            this.trigger('error', response.errors, []);
         }
     });
 });

@@ -1,6 +1,6 @@
 /*jshint multistr: true, eqnull:true */
 
-define(['Backbone', 'underscore', 'login', 'register', 'css!./stylesheets/style'], function (Backbone, _, login, register) {
+define(['Backbone', 'underscore', './apps/login/main', './apps/register/main', 'css!./stylesheets/style'], function (Backbone, _, login, register) {
     return Backbone.View.extend({
         template: _.template('\
             <div id="welcome" class="wrapper">\

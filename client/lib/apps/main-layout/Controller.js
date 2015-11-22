@@ -2,12 +2,14 @@ define(['underscore', './Model', './View'], function(_, Model, View) {
     function Controller () {
         this._view = null;
         this._model = null;
-        this.createPanel = function (container) {
+        this.createPanel = function (container, user) {
             if (this._view) {
                 throw new Error('Destroy the old panel before createing a new one (call destroyPanel before calling createPanel second time)');
             }
 
-            this._model = new Model({});
+            this._model = new Model({
+                user: user
+            });
 
 
             this._view = new View({
