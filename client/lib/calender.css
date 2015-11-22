@@ -1,3 +1,7 @@
-.on-top {
-    z-index: 9999 !important;
+.wc-cal-event {
+  z-index: 9 !important;
+}
+
+.beneath {
+  z-index: 5 !important;
 }
