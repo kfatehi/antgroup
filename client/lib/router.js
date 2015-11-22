@@ -9,7 +9,7 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
         renderWelcomeScreen: function () {
             // user welcome controller to render welcome screen
            window.AntGroup.welcome.createPanel(window.AntGroup.mainContainer);
-            /*$.ajax({
+            $.ajax({
                 url: AntGroup.baseurl + "/session",
                 type: "GET",
                 cotentType: 'application/json',
@@ -17,9 +17,9 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
                   window.AntGroup.router.navigate('schedules/' + user.id, {trigger: true});
                 },
                 error: function() {
-                  // then stay here and log in
+                  // stay here and log in
                 }
-            });*/
+            });
         },
 
         renderMainLayout: function (id) {
@@ -29,14 +29,14 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
                 type: "GET",
                 contentType: 'application/json',
                 success: function(user) {
-                  console.log(user);
+                  console.log('rendermainlayout', user);
                   window.AntGroup.mainContainer.empty();
                   window.AntGroup.welcome.destroyPanel(true);
                   window.AntGroup.mainLayout.destroyPanel(true); // just in case
                   window.AntGroup.mainLayout.createPanel(window.AntGroup.mainContainer, user);
                 },
                 error: function(err) {
-                  alert(err)
+                  console.error(err.stack);
                 }
             });
 
