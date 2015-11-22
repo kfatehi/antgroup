@@ -52,6 +52,8 @@ define(['Backbone', 'underscore', './GroupRow', './GroupRowView', 'css!./stylesh
                 var groupRowModel, groupRowView;
                 var self = this;
                 groups.forEach(function (group) {
+                    group.owner = group.ownerId;
+                    delete group.ownerId;
                     groupRowModel = new GroupRow(group);
                     groupRowView = new GroupRowView({model: groupRowModel});
                     self.listenTo(groupRowView, 'removeGroupRow', self.removeHandler.bind(self, groupRowView));
