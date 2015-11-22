@@ -28,7 +28,7 @@ var antcalender = function(container, data) {
                 return $(window).height() - $("h1").outerHeight();
             },
             eventRender : function(calEvent, $event) {
-                console.log($event)
+                console.log(calEvent)
                 $event.find('.wc-time')
                     .css("backgroundColor", "black")
                     .css("color", "white");
