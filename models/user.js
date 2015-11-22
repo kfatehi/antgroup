@@ -30,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
       login: function(email, password) {
         return User.findOne({ where: { email: email } })
         .then(function(user) {
+          if (!user) throw new Error("User not found");
           return user.comparePassword(password)
         })
       },
