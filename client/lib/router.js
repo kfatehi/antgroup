@@ -15,8 +15,8 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
         renderMainLayout: function (id) {
             // use main-layout controller to render main layout
             window.AntGroup.mainContainer.empty();
-            window.AntGroup.welcome.destroyPanel();
-            window.AntGroup.mainLayout.destroyPanel(); // just in case
+            window.AntGroup.welcome.destroyPanel(true);
+            window.AntGroup.mainLayout.destroyPanel(true); // just in case
             window.AntGroup.mainLayout.createPanel(window.AntGroup.mainContainer, window.AntGroup.user);
             window.AntGroup.user = null;
 
