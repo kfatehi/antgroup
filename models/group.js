@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Group.belongsToMany(models.User, { through: models.Membership })
+        Group.belongsToMany(models.User, { through: models.Membership, foreignKey: 'groupId' })
       },
       checkOwner: function(groupId, userId) {
         return Group.findOne({ where: { id: groupId, ownerId: userId }})
