@@ -1,6 +1,20 @@
 /*jshint multistr: true, eqnull:true */
+var data = [{
+    "user": {
+        "email" : 'sergzak022@gmail.com',
+        "color" : 'lightblue'
+    },
+    "events": []
+}, {
+    "user" : {
+        "email" : 'artur@gmail.com',
+        "color" : 'pink'
+    },
+    "events": []
+}];
 
-define(['Backbone', 'underscore', './apps/group-list/main', 'css!./stylesheets/style'], function (Backbone, _, groupListControler) {
+
+define(['Backbone', 'underscore', 'calender', './apps/group-list/main', 'css!./stylesheets/style'], function (Backbone, _, calender, groupListControler) {
     return Backbone.View.extend({
         template: _.template('\
             <div id="calender" class="panel panel-default">\
@@ -31,6 +45,9 @@ define(['Backbone', 'underscore', './apps/group-list/main', 'css!./stylesheets/s
 
         render: function () {
             this.$el.append(this.template());
+
+            calender.render(this.$el.find('div#groups-ui'), data);
+
             groupListControler.destroyPanel(true);
             groupListControler.createPanel(this.$el.find('div#groups-ui'), this.model.get('user'));
             return this;

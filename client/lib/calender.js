@@ -1,4 +1,4 @@
-var antcalender = function(container, data) {
+define(['jquery', 'jquery-ui', 'jquery-weekcalendar'], function ($) {
     function render(container, data) {
 
         for (var key in data) {
@@ -73,14 +73,6 @@ var antcalender = function(container, data) {
     return {
         render: render
     };
-}();
-
-/*[{
-        user: {
-            email: 'someemal'
-        },
-        events: [{}]
-     }]*/
-
+});
 
 

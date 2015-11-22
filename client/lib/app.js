@@ -21,7 +21,8 @@ requirejs.config({
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/bootstrap/dist/js/bootstrap',
         "jquery-ui": '../bower_components/jquery-ui/jquery-ui',
-        "jquery-weekcalendar" : "../bower_components/jquery-weekcalendar/jquery.weekcalendar"
+        "jquery-weekcalendar" : "../bower_components/jquery-weekcalendar/jquery.weekcalendar",
+        'calender' : "./calender"
     },
 
     shim: {
@@ -42,7 +43,10 @@ requirejs.config({
             deps: ['jquery', 'css!../bower_components/jquery-ui/jquery-ui.css']
         },
         "jquery-weekcalendar": {
-            deps: ['jquery', 'css!../bower_components/jquery-weekcalendar/jquery.weekcalendar.css']
+            deps: ['jquery', "jquery-ui", 'css!../bower_components/jquery-weekcalendar/jquery.weekcalendar.css']
+        },
+        "calender": {
+            deps: ['jquery-weekcalendar']
         }
     }
 });
