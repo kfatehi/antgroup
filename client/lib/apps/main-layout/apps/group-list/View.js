@@ -1,11 +1,8 @@
 /*jshint multistr: true, eqnull:true */
 
-define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone, _) {
+define(['Backbone', 'underscore', './GroupRow', './GroupRowView', 'css!./stylesheets/style'], function (Backbone, _, GroupRow, GroupRowView) {
     return Backbone.View.extend({
-        template: _.template("\
-            <div> \
-            </div> \
-        "),
+        className: 'group-list',
 
         _views: {},
 
@@ -25,7 +22,18 @@ define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone
         },
 
         render: function () {
+            var groups = this.model.get('groups');
 
+            if ( Array.isArray(groups) ) {
+                var $el = this.$el;
+                $el.empty();
+                var groupRowModel, groupRowView;
+                groups.forEach(function (group) {
+                    groupRowModel = new GroupRow(group);
+                    groupRowView = new GroupRowView({model: groupRowModel});
+                    $el.append(groupRowView.render().el);
+                });
+            }
             return this;
         }
     });

@@ -1,15 +1,45 @@
-.panel-list table {
-	margin-bottom: 0;
+body {
+  background: #eee !important;
 }
 
-.panel-list td.edit {
-	width: 30px;
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
-.panel-list td.duplicate {
-	width: 30px;
+.form-login {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-.panel-list td.rmv {
-	width: 30px;
+.form-login .form-login-heading,
+.form-login .checkbox {
+  margin-bottom: 30px;
+}
+.form-login .checkbox {
+  font-weight: normal;
+}
+.form-login .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-login .form-control:focus {
+  z-index: 2;
+}
+.form-login input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-login input[type="password"] {
+  margin-bottom: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

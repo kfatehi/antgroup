@@ -2,14 +2,7 @@
 
 define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone, _) {
     return Backbone.View.extend({
-        template: _.template('\
-            <div class="panel panel-default pgroup-row">\
-                <div class="panel-heading">\
-                </div>\
-                <div class="panel-body">\
-                </div>\
-            </div>\
-        '),
+        tagName: 'tr',
 
         events: {
             'click button[type="submit"]' : 'register'
@@ -31,7 +24,12 @@ define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone
         },
 
         render: function () {
-            this.$el.html(this.template());
+            this.$el.append('<td style="width: 40px; background-color:' + this.model.get('color') + ' " class="color-code-td"></td>');
+            this.$el.append('<td class="info-td"></td>');
+            var $td = this.$el.find('.info-td');
+            $td.append('<span class="member-name">' + this.model.get('name') + '</span>');
+            $td.append('<input class="select-user" type="checkbox">');
+            $td.find('input').prop('checked', true);
             return this;
         }
     });
