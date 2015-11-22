@@ -1,24 +1,26 @@
-# Core Features
-* Create a group
-* Invite another person into the group
-* See groups I belong to
-* Automatically synchronize users with antplanner
-* Render group memebers' schedule data on a calendar
+## Core Features
 
-# Nice to have
+* Create groups
+* Add people into your groups by email (FIXME make this by invitation!)
+* Render group memebers' schedule data (from Antplanner) on a calendar
+
+## Nice to have / Future
 * Share files about class
 * Send messages to the group
 
-# Technology Choices
+## Technology Choices
 
-## Frontend
+### Frontend
 
-* Calendar https://github.com/robmonie/jquery-week-calendar/wiki
+* RequireJS
+* BackboneJS
+* jQuery.weeklyCalendar https://github.com/robmonie/jquery-week-calendar/wiki
 
-## Backend
+### Backend
 
 * Node.js
 * Express
+* Sequelize
 
 # Antplanner Extraction Example
 
