@@ -54,7 +54,7 @@ require(['welcome', './router', 'main-layout'], function (welcome, router, mainL
     AntGroup.welcome = welcome;
     AntGroup.mainLayout = mainLayout;
     AntGroup.router = router;
-    AntGroup.baseurl = 'http://40.122.127.151';//'http://localhost';
+    AntGroup.baseurl = window.location.origin;
 
     Backbone.history.start();
     router.navigate('index', {trigger: true});
