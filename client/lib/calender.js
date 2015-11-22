@@ -18,10 +18,9 @@ var antcalender = function(container, data) {
             timeslotsPerHour: 4,
             dateFormat: "",
             allowCalEventOverlap: true,
-            overlapEventsSeparate: true,
+            overlapEventsSeparate: false,
             businessHours: {start: 6, end: 22, limitDisplay: true},
-            readonly: true,
-            showHeader: true,
+            readonly: true,            showHeader: true,
             showColumnHeaderDate: false,
             buttons: false,
             height: function($calendar){
@@ -33,11 +32,11 @@ var antcalender = function(container, data) {
                     .css("color", "white");
 
                 $event
-                    //.css('z-index', 10000)
+                    .css('z-index', 999)
                     .css("backgroundColor", calEvent.color)
                     .css('opacity', 1)
                     .css("color", "black")
-                    .css("border", '1px solid black');
+                    //.css("border", '1px solid black');
 
                 $event.find('.wc-title').css("opacity", 1);
             },
@@ -56,11 +55,13 @@ var antcalender = function(container, data) {
                 //displayMessage("<strong>Clicked Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             eventMouseover : function(calEvent, $event) {
-                //$event.css('z-index', 100000);
+                $event.css('z-index', parseInt($event.css('z-index')) + 1 );
+                console.log("mouseover")
                 //displayMessage("<strong>Mouseover Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             eventMouseout : function(calEvent, $event) {
-                //$event.css('z-index', null);
+                console.log("mouseout")
+                $event.css('z-index', parseInt($event.css('z-index')) - 1 );
                 //displayMessage("<strong>Mouseout Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             noEvents : function() {
