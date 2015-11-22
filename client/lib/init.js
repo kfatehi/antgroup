@@ -168,7 +168,7 @@ var data = [{
     }
 
     function renderCalender (container, data) {
-        antcallender.render(container, data);
+        antcalender.render(container, data);
     }
 
     function displayMessage(message) {
