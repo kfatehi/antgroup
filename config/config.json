@@ -11,11 +11,14 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "antagroup",
+    "username": "antgroup",
     "password": "Artur$12",
-    "database": "database_production",
+    "database": "antgroup",
     "host": "qxgq6s2ft7.database.windows.net",
     "port": "1433",
-    "dialect": "mssql"
+    "dialect": "mssql",
+    "dialectOptions": {
+      "encrypt": true
+    }
   }
 }
