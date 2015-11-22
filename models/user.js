@@ -44,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
             errors.push('Email is invalid')
           if (body.password !== body.confirmPassword)
             errors.push('Passwords do not match')
-          if (body.password.length <= 6)
+          if (body.password.length < 6)
             errors.push('Password must be at least 6 characters')
 
           if (errors.length > 0) {
