@@ -55,8 +55,8 @@ define(['jquery', 'jquery-ui', 'jquery-weekcalendar'], function ($) {
             eventClick : function(calEvent, $event) {
                 //$event.css('z-index', parseInt($event.css('z-index')) - 1 );
                 //displayMessage("<strong>Clicked Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
-              $('.beneath').removeClass('beneath');
-              $event.addClass('beneath');
+              $('.on-top').removeClass('on-top');
+              $event.addClass('on-top');
             },
             eventMouseover : function(calEvent, $event) {
                 //displayMessage("<strong>Mouseover Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
