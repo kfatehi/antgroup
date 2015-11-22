@@ -32,7 +32,6 @@ var antcalender = function(container, data) {
                     .css("color", "white");
 
                 $event
-                    .css('z-index', 999)
                     .css("backgroundColor", calEvent.color)
                     .css('opacity', 1)
                     .css("color", "black")
@@ -55,13 +54,13 @@ var antcalender = function(container, data) {
                 //displayMessage("<strong>Clicked Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             eventMouseover : function(calEvent, $event) {
-                $event.css('z-index', parseInt($event.css('z-index')) + 1 );
+                $('.on-top').removeClass('on-top');
+                $event.addClass('on-top');
+              console.log($event);
                 console.log("mouseover")
                 //displayMessage("<strong>Mouseover Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             eventMouseout : function(calEvent, $event) {
-                console.log("mouseout")
-                $event.css('z-index', parseInt($event.css('z-index')) - 1 );
                 //displayMessage("<strong>Mouseout Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             noEvents : function() {
