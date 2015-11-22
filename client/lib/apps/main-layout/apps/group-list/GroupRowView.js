@@ -5,8 +5,9 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
         template: _.template('\
             <div class="panel panel-default group-row">\
                 <div class="panel-heading">\
-                    <button class="btn btn-default btn-xs">Select</button>\
-                    <button class="btn btn-success btn-xs">Add Member</button>\
+                    <button class="btn btn-default btn-xs select-group">Select</button>\
+                    <button class="btn btn-success btn-xs add-member">Add Member</button>\
+                    <button class="btn btn-danger btn-xs remove-group">Remove Group</button>\
                 </div>\
                 <div class="panel-body panel-table">\
                     <table class="table table-striped member-table"></table>\
@@ -15,7 +16,25 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
         '),
 
         events: {
-            'click button[type="submit"]' : 'register'
+            'click button.select-group' : 'groupSelected',
+            'click button.add-member' : 'addMember',
+            'click button.remove-group' : 'removeGroup'
+        },
+
+        groupSelected: function () {
+            console.log('group got selected');
+            this.model.sendCalenderRerenderRequest();
+        },
+
+        addMember: function () {
+            console.log('user added to the group');
+            var email = window.prompt('Member Email');
+            this.model.addMember(email);
+        },
+
+        removeGroup: function () {
+            //this.model.sendRemoveRequest();
+            console.log('enable group removal');
         },
 
         initialize: function () {

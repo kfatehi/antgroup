@@ -8,13 +8,14 @@ define(['Backbone', 'underscore', './GroupRow', './GroupRowView', 'css!./stylesh
                 <div class='panel-body group-list'></div>\
                 <div class='panel-footer'>\
                     <button class='btn btn-success add-group'>Add Group</button>\
-                    <button class='btn btn-default remove-group'>Remove Group</button>\
                 </div>\
             </div>\
         "),
         className: 'group-list',
 
-        _views: {},
+        events: {
+            'click button.add-group' : 'addGroup'
+        },
 
         initialize: function () {
 
