@@ -1,10 +1,10 @@
 body {
-	background: url("students-group.jpg") no-repeat fixed center;
+	background: url("students-group.jpg") center center;
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-position: center top;
 	font: 12px "Trebuchet MS",Trebuchet,Verdana,sans-serif;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	margin: 0;
 }
 p {
@@ -14,8 +14,10 @@ p {
 	top: 70%;
 	width: 100%;
 	text-align: center;
-    color: white;
-    font-size: large;
+     	color: white;
+    	font-size: large;
+	padding: 30px;
+	line-height: 23px;
 }
 h1
 {
