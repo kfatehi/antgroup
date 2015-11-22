@@ -9,7 +9,7 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
         renderWelcomeScreen: function () {
             // user welcome controller to render welcome screen
            window.AntGroup.welcome.createPanel(window.AntGroup.mainContainer);
-            $.ajax({
+            /*$.ajax({
                 url: AntGroup.baseurl + "/session",
                 type: "GET",
                 cotentType: 'application/json',
@@ -19,7 +19,7 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
                 error: function() {
                   // then stay here and log in
                 }
-            });
+            });*/
         },
 
         renderMainLayout: function (id) {
@@ -27,7 +27,7 @@ define(['Backbone', 'underscore'], function(Backbone, _) {
             $.ajax({
                 url: AntGroup.baseurl + "/session",
                 type: "GET",
-                cotentType: 'application/json',
+                contentType: 'application/json',
                 success: function(user) {
                   console.log(user);
                   window.AntGroup.mainContainer.empty();

@@ -46,7 +46,7 @@ define(['Backbone', 'underscore', 'calender', './apps/group-list/main', 'css!./s
         render: function () {
             this.$el.append(this.template());
 
-            calender.render(this.$el.find('div#groups-ui'), data);
+            calender.render(this.$el.find('div#calender'), data);
 
             groupListControler.destroyPanel(true);
             groupListControler.createPanel(this.$el.find('div#groups-ui'), this.model.get('user'));
