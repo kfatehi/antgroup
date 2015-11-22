@@ -1,18 +1,34 @@
-var antcallender = (function() {
+var antcalender = function(container, data) {
     function render(container, data) {
+
+        for (var key in data) {
+            for (var i in data[key].events) {
+                data[key].events[i].color = data[key].user.color
+                data[key].events[i].email = data[key].user.email
+            }
+        }
+
         var union = data.reduce(function (union, cur) {
             return union.concat(cur.events);
         }, []);
 
         container.weekCalendar({
             date: new Date("2012-10-01T21:50:00.000Z"),
+            timeFormat:"h:i",
             timeslotsPerHour: 4,
-            allowCalEventOverlap: false,
-            overlapEventsSeparate: false,
+            dateFormat: "",
+            allowCalEventOverlap: true,
+            overlapEventsSeparate: true,
+            businessHours: {start: 6, end: 22, limitDisplay: true},
+            readonly: true,
+            showHeader: true,
+            showColumnHeaderDate: false,
+            buttons: false,
             height: function($calendar){
                 return $(window).height() - $("h1").outerHeight();
             },
             eventRender : function(calEvent, $event) {
+                console.log($event)
                 $event.find('.wc-time')
                     .css("backgroundColor", "black")
                     .css("color", "white");
@@ -37,6 +53,8 @@ var antcallender = (function() {
                 displayMessage("<strong>Resized Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
             eventClick : function(calEvent, $event) {
+                console.log($event)
+                console.log(this)
                 $event.css('z-index', parseInt($event.css('z-index')) - 1 );
                 displayMessage("<strong>Clicked Event</strong><br/>Start: " + calEvent.start + "<br/>End: " + calEvent.end);
             },
@@ -58,7 +76,7 @@ var antcallender = (function() {
     return {
         render: render
     };
-})();
+}();
 
 /*[{
         user: {
