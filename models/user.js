@@ -80,11 +80,6 @@ module.exports = function(sequelize, DataTypes) {
             else reject(new Error('bad password'));
           });
         });
-      },
-      buildLayout: function() {
-        return new Promise(function(resolve, reject) {
-          resolve({})
-        });
       }
     }
   });

@@ -7,6 +7,13 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+      },
+      checkOwner: function(groupId, userId) {
+        console.log(groupId, userId);
+        Group.findOne({ where: { id: groupId, ownerId: userId }}).then(function(grp) {
+          if (grp) return resolve(grp);
+          else throw new Error('Not the owner');
+        })
       }
     }
   });
