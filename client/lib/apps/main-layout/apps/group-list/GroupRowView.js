@@ -36,6 +36,8 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
 
         removeGroup: function () {
             //this.model.sendRemoveRequest();
+            this.model.remove();
+            this.trigger('removeGroupRow');
             console.log('enable group removal');
         },
 
@@ -54,6 +56,10 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
             }
         },
 
+        filterOut: function (bool, email) {
+            this.model.handleFilter(bool, email);
+        },
+
         render: function () {
             this.$el.html(this.template());
 
@@ -63,9 +69,13 @@ define(['Backbone', 'underscore', './MemberRow', './MemberRowView', 'css!./style
 
             var members = this.model.get('members');
             var memberRowModel, memberRowView;
+            var self = this;
             members.forEach(function (member, idx) {
                 member.color = AntGroup.CSS_COLOR_NAMES[idx];
                 memberRowModel = new MemberRow(member);
+
+                self.listenTo(memberRowModel, 'filterOut', self.filterOut);
+
                 memberRowView = new MemberRowView({
                     model: memberRowModel
                 });

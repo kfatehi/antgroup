@@ -37,6 +37,10 @@ define(['Backbone', 'underscore', './GroupRow', './GroupRowView', 'css!./stylesh
             }
         },
 
+        removeHandler: function (groupView) {
+            this.model.removeGroupHandler(groupView);
+        },
+
         render: function () {
             var groups = this.model.get('groups');
 
@@ -46,9 +50,11 @@ define(['Backbone', 'underscore', './GroupRow', './GroupRowView', 'css!./stylesh
                 $el.html(this.template());
                 var $body = $el.find('div.group-list');
                 var groupRowModel, groupRowView;
+                var self = this;
                 groups.forEach(function (group) {
                     groupRowModel = new GroupRow(group);
                     groupRowView = new GroupRowView({model: groupRowModel});
+                    self.listenTo(groupRowView, 'removeGroupRow', self.removeHandler.bind(self, groupRowView));
                     $body.append(groupRowView.render().el);
                 });
             }

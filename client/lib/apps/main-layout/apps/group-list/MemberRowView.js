@@ -5,11 +5,17 @@ define(['Backbone', 'underscore', 'css!./stylesheets/style'], function (Backbone
         tagName: 'tr',
 
         events: {
-            'click button[type="submit"]' : 'register'
+            'click button[type="submit"]' : 'register',
+            'click input[type="checkbox"]' : 'filter'
         },
 
         initialize: function () {
             this.listenTo(this.model, 'error', this.renderError);
+        },
+
+        filter: function () {
+            console.log('filter');
+            this.model.filterOut();
         },
 
         remove: function (empty) {
